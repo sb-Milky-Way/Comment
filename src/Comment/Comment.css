@@ -1,5 +1,49 @@
-.CommentContainer {
-  .Comment {
-
+.commentContainer {
+  max-width:400px;
+  background: transparent;
+  line-height: 14px;
+  padding: 0 20px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  margin-bottom: -1px;
+  -o-transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  .userAvatarContainer {
+    display:block;
+    float:left;
+    > div {
+      max-height:34px;
+      max-width: 34px;
+      vertical-align:top;
+    }
+  }
+  .commentContent {
+    min-height:34px;
+    margin-left:44px;
+    .commentActions {
+      float:right;
+    }
+    .commentAuthor {
+      font-size: 12.5px;
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+      line-height:1.36;
+    }
+    .commentText {
+      padding-top:1px;
+      word-wrap:break-word;
+      line-height:1.36;
+      overflow:hidden;
+    }
+    .commentFooter {
+      font-size:12.5px;
+      padding-top:3px;
+      margin-bottom:-1px;
+      .commentFooterActions {
+        float:right;
+        font-size:16px;
+      }
+    }
   }
 }
