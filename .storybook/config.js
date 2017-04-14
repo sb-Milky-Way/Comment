@@ -1,7 +1,7 @@
 import { config } from 'storybox';
 config({
   options: {
-    name: 'Components',
+    name: 'Comment',
   },
   backgrounds: null,
   modules: require('glob!./glob.txt'),

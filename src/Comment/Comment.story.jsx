@@ -1,9 +1,20 @@
 import React from 'react'; //eslint-disable-line
 import Comment from './Comment';
 
+const requiredProps = {
+  author : "Vasya Pupkin",
+  text : "I am comment"
+};
+
+const customAvatar = <div style={{ width: 34, height: 34, lineHeight: "34px", textAlign:"center", color: "red", border:"2px solid green" }}>QQ</div>;
+
 module.exports = function ({ storiesOf, action }) {
   return storiesOf('Comment', module)
     .add('default', () => (
-      <Comment />
+      <Comment {...requiredProps}/>
     ))
+    .add('with custom avatar', () => (
+      <Comment {...requiredProps} customAvatar={customAvatar} />
+    ))
+
 };
