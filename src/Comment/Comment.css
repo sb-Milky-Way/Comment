@@ -1,52 +1,61 @@
-.commentContainer {
-  max-width:400px;
+.comment {
+  max-width: 400px;
   background: transparent;
   line-height: 14px;
   padding: 0 20px;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   margin-bottom: -1px;
-  -o-transition: background-color 0.2s ease, border-color 0.2s ease;
   transition: background-color 0.2s ease, border-color 0.2s ease;
-  .userAvatarContainer {
-    display:block;
-    float:left;
-    .defaultAvatar {
-      width: 34px;
-      height:34px;
-      background: gray;
-      border-radius:50%;
-      line-height:34px;
-      text-align:center;
-    }
+
+  &__avatar-container {
+    display: block;
+    float: left;
   }
-  .commentContent {
-    min-height:34px;
-    margin-left:44px;
-    .commentActions {
-      float:right;
-    }
-    .commentAuthor {
-      font-size: 12.5px;
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
-      line-height:1.36;
-    }
-    .commentText {
-      padding-top:1px;
-      word-wrap:break-word;
-      line-height:1.36;
-      overflow:hidden;
-    }
-    .commentFooter {
-      font-size:12.5px;
-      padding-top:3px;
-      margin-bottom:-1px;
-      .commentFooterActions {
-        float:right;
-        font-size:16px;
-      }
-    }
+
+  &__avatar {
+    width: 34px;
+    height: 34px;
+    background: gray;
+    border-radius: 50%;
+    line-height: 34px;
+    text-align: center;
   }
+
+  &__content {
+    min-height: 34px;
+    margin-left: 44px;
+
+  }
+
+  &__actions {
+    float: right;
+  }
+
+  &__author {
+    font-size: 12.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.36;
+  }
+
+  &__text {
+    padding-top: 1px;
+    word-wrap: break-word;
+    line-height: 1.36;
+    overflow: hidden;
+  }
+
+  &__footer {
+    font-size: 12.5px;
+    padding-top: 3px;
+    margin-bottom: -1px;
+  }
+
+  &__footer-actions {
+    float: right;
+    font-size: 16px;
+  }
+
 }
