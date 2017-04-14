@@ -10,23 +10,23 @@ class Comment extends Component {
   static propTypes = {
     text : PropTypes.string.isRequired,
     author : PropTypes.string.isRequired,
-    time : PropTypes.instanceOf(Date)
-  };
+    time : PropTypes.instanceOf(Date),
+    customAvatar : PropTypes.node
+  }
+
   static defaultProps = {
     time : new Date()
-  };
-
-  avatarRenderer = () => {
-    return <div>UU</div>;
   }
 
   render() {
-    const { author, text, time } = this.props;
+    const { author, text, time, customAvatar } = this.props;
+
+    const avatar = customAvatar || <div styleName="defaultAvatar">{author.split('').shift().toUpperCase()}</div>;
 
     return (
       <div styleName="commentContainer">
         <div styleName="userAvatarContainer">
-            {this.avatarRenderer()}
+            {avatar}
         </div>
         <div styleName="commentContent">
             <div styleName="commentActions"><ClearIcon /></div>

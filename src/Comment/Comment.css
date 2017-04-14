@@ -11,10 +11,13 @@
   .userAvatarContainer {
     display:block;
     float:left;
-    > div {
-      max-height:34px;
-      max-width: 34px;
-      vertical-align:top;
+    .defaultAvatar {
+      width: 34px;
+      height:34px;
+      background: gray;
+      border-radius:50%;
+      line-height:34px;
+      text-align:center;
     }
   }
   .commentContent {
