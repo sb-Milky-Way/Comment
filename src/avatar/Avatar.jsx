@@ -11,7 +11,8 @@ class Avatar extends Component {
     fallback: pt.string.isRequired,
     initial: pt.string.isRequired,
     alt: pt.string,
-    className: pt.string
+    // size should be one of two strings: 'small', 'large'
+    size: pt.string
   };
   static defaultProps = {
     className: 'avatar-image',
@@ -20,6 +21,8 @@ class Avatar extends Component {
   };
 
   render() {
+    const className = `avatar-${this.props.size}`;
+
     return (
       <div>
         {this.props.children}
@@ -28,7 +31,7 @@ class Avatar extends Component {
           fallbackImage={this.props.fallback}
           initialImage={this.props.initial}
           alt={this.props.alt}
-          className={this.props.className}
+          className={className}
         />
       </div>
     );
