@@ -20,13 +20,15 @@ class Comment extends Component {
     onSend : PropTypes.func,
     onCancel : PropTypes.func,
     onDelete : PropTypes.func,
-    defaultEditMode : PropTypes.bool
+    defaultEditMode : PropTypes.bool,
+    hideAuthor : PropTypes.bool,
+    hideTime : PropTypes.bool,
+    customCommentFooterActions : PropTypes.any,
+    editableOnClick : PropTypes.bool
   };
 
   static defaultProps = {
-    time: new Date(),
-    editable : false,
-    defaultEditMode : false
+    time: new Date()
   };
 
   constructor(props) {
@@ -54,13 +56,30 @@ class Comment extends Component {
     this.toggleEditMode(e);
   }
 
+  onCommentTextClick = (e) => {
+    if (this.props.editableOnClick)
+      this.toggleEditMode(e);
+  }
+
   renderComment = () => {
-    const {author, text, time, editable, onDelete} = this.props;
+    const {
+      author,
+      text,
+      time,
+      editable,
+      onDelete,
+      hideAuthor,
+      hideTime,
+      customCommentFooterActions
+    } = this.props;
     return (
       <div styleName="comment__content">
-        <div styleName="comment__author">{author}</div>
+        {!hideAuthor &&
+          <div styleName="comment__author">{author}</div>
+        }
         <div styleName="comment__actions">
-          {!this.state.editMode && editable &&
+
+          {editable &&
             <button styleName="comment__icon-btn" onClick={this.toggleEditMode}><EditIcon /></button>
           }
           {onDelete &&
@@ -68,10 +87,17 @@ class Comment extends Component {
           }
         </div>
 
-        <div styleName="comment__text">{text}</div>
+        <div styleName="comment__text" onClick={this.onCommentTextClick}>{text}</div>
         <footer styleName="comment__footer">
-          <div styleName="comment__meta">{time.toISOString().slice(0, 10)}</div>
-          <div styleName="comment__footer-actions"><button styleName="comment__icon-btn"><FavoriteIcon /></button></div>
+          {!hideTime &&
+            <div styleName="comment__meta">{time.toISOString().slice(0, 10)}</div>
+          }
+          <div styleName="comment__footer-actions">
+            {!customCommentFooterActions &&
+              <button styleName="comment__icon-btn"><FavoriteIcon /></button>
+            }
+            {customCommentFooterActions}
+          </div>
         </footer>
       </div>
     )

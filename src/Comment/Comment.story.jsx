@@ -19,8 +19,17 @@ module.exports = function ({ storiesOf, action }) {
     .add('editable comment', () => (
       <Comment {...requiredProps} customAvatar={customAvatar} editable />
     ))
-    .add('in edit mode', () => (
-      <Comment author="Vasya Pupkin" text="Write something..." customAvatar={customAvatar} defaultEditMode={true}  />
+    .add('reply form', () => (
+      <Comment
+        author="Vasya Pupkin"
+        text="Write something..."
+        customAvatar={customAvatar}
+        defaultEditMode={true}
+        hideTime
+        hideAuthor
+        customCommentFooterActions={<span></span>}
+        editableOnClick
+      />
     ))
 
 };
