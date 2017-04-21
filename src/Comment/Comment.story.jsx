@@ -16,5 +16,11 @@ module.exports = function ({ storiesOf, action }) {
     .add('with custom avatar', () => (
       <Comment {...requiredProps} customAvatar={customAvatar} />
     ))
+    .add('editable comment', () => (
+      <Comment {...requiredProps} customAvatar={customAvatar} editable />
+    ))
+    .add('in edit mode', () => (
+      <Comment author="Vasya Pupkin" text="Write something..." customAvatar={customAvatar} defaultEditMode={true}  />
+    ))
 
 };
