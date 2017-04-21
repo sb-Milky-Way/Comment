@@ -8,6 +8,7 @@ import EditIcon from 'react-icons/lib/md/edit';
 import AddIcon from 'react-icons/lib/md/add-circle-outline';
 import DefaultAvatar from '../Avatar';
 import Textarea from 'react-textarea-autosize';
+import Time from 'react-time-format';
 
 @importcss(styles)
 class Comment extends Component {
@@ -15,6 +16,7 @@ class Comment extends Component {
     text: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     time: PropTypes.instanceOf(Date),
+    timeFormat : PropTypes.string,
     customAvatar: PropTypes.node,
     editable : PropTypes.bool,
     onSend : PropTypes.func,
@@ -24,11 +26,13 @@ class Comment extends Component {
     hideAuthor : PropTypes.bool,
     hideTime : PropTypes.bool,
     customCommentFooterActions : PropTypes.any,
-    editableOnClick : PropTypes.bool
+    editableOnClick : PropTypes.bool,
+    className : PropTypes.string
   };
 
   static defaultProps = {
-    time: new Date()
+    time: new Date(),
+    timeFormat: "MM-DD-YYYY"
   };
 
   constructor(props) {
@@ -66,6 +70,7 @@ class Comment extends Component {
       author,
       text,
       time,
+      timeFormat,
       editable,
       onDelete,
       hideAuthor,
@@ -90,7 +95,9 @@ class Comment extends Component {
         <div styleName="comment__text" onClick={this.onCommentTextClick}>{text}</div>
         <footer styleName="comment__footer">
           {!hideTime &&
-            <div styleName="comment__meta">{time.toISOString().slice(0, 10)}</div>
+            <div styleName="comment__meta">
+              <Time value={time} format={timeFormat} />
+            </div>
           }
           <div styleName="comment__footer-actions">
             {!customCommentFooterActions &&
@@ -128,7 +135,7 @@ class Comment extends Component {
     const commentContent = this.state.editMode ? this.renderReplyForm() : this.renderComment();
 
     return (
-      <section styleName="comment">
+      <section styleName="comment" className={this.props.className}>
         <div styleName="comment__avatar-container">
           {avatar}
         </div>

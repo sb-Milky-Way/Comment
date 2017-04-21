@@ -11,20 +11,25 @@ const customAvatar = <div style={{ width: 34, height: 34, lineHeight: "34px", te
 module.exports = function ({ storiesOf, action }) {
   return storiesOf('Comment', module)
     .add('default', () => (
-      <Comment {...requiredProps}/>
+      <Comment {...requiredProps} />
     ))
     .add('with custom avatar', () => (
       <Comment {...requiredProps} customAvatar={customAvatar} />
     ))
+    .add('time format', () => (
+      <Comment {...requiredProps} customAvatar={customAvatar} timeFormat="DD.MM.YY HH:MM"/>
+    ))
     .add('editable comment', () => (
       <Comment {...requiredProps} customAvatar={customAvatar} editable />
+    ))
+    .add('editable and removable comment', () => (
+      <Comment {...requiredProps} customAvatar={customAvatar} editable onDelete={() => { console.log("delete click") }} />
     ))
     .add('reply form', () => (
       <Comment
         author="Vasya Pupkin"
         text="Write something..."
         customAvatar={customAvatar}
-        defaultEditMode={true}
         hideTime
         hideAuthor
         customCommentFooterActions={<span></span>}
