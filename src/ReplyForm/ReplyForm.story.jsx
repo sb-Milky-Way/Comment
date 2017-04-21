@@ -4,6 +4,6 @@ import ReplyForm from './ReplyForm';
 module.exports = function ({ storiesOf, action }) {
   return storiesOf('ReplyForm', module)
     .add('default', () => (
-      <ReplyForm />
+      <ReplyForm author="Vasya Pupkin"/>
     ))
 };

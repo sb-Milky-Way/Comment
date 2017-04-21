@@ -1,5 +1,55 @@
-.ReplyFormContainer {
-  .ReplyForm {
+.reply-form {
+  max-width: 400px;
 
+  &__avatar-container {
+    display: block;
+    float: left;
+  }
+
+  &__avatar {
+    width: 34px;
+    height: 34px;
+    background: gray;
+    border-radius: 50%;
+    line-height: 34px;
+    text-align: center;
+  }
+
+  &__content {
+    margin-left: 44px;
+    textarea {
+      resize: none;
+      width: calc(100% - 34px);
+      padding: 14px 20px 16px 12px;
+      border:1px solid #e8e8e8;
+      display:block;
+    }
+  }
+
+  &__footer {
+    background: #fafbfc;
+    padding: 10px 20px;
+    height:30px;
+    display:block;
+  }
+
+  &__footer-actions {
+    float: left;
+    position:relative;
+    line-height:30px;
+  }
+
+  &__footer-send {
+    float: right;
+    position:relative;
+  }
+
+  &__footer-send-btn {
+    padding:8px 20px;
+    outline:none;
+    background: white;
+    border:1px solid #e8e8e8;
+    display:inline-block;
+    cursor: pointer;
   }
 }
