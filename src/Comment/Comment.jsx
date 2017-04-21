@@ -27,12 +27,18 @@ class Comment extends Component {
     hideTime : PropTypes.bool,
     customCommentFooterActions : PropTypes.any,
     editableOnClick : PropTypes.bool,
-    className : PropTypes.string
+    className : PropTypes.string,
+    placeholder : PropTypes.string,
+    sendBtnText : PropTypes.string,
+    cancelBtnText : PropTypes.string,
   };
 
   static defaultProps = {
     time: new Date(),
-    timeFormat: "MM-DD-YYYY"
+    timeFormat: "MM-DD-YYYY",
+    placeholder: "Write here...",
+    sendBtnText: "Send",
+    cancelBtnText: "Cancel"
   };
 
   constructor(props) {
@@ -111,16 +117,17 @@ class Comment extends Component {
   }
 
   renderReplyForm = () => {
+    const { placeholder, sendBtnText, cancelBtnText } = this.props;
     return (
       <div styleName="reply-form">
-        <Textarea rows={3} placeholder="Write here..."></Textarea>
+        <Textarea rows={3} placeholder={placeholder}></Textarea>
         <footer styleName="reply-form__footer">
           <div styleName="reply-form__actions">
             <button styleName="comment__icon-btn"><AddIcon size="20px" color="#828282"/></button>
           </div>
           <div styleName="reply-form__actions">
-            <button styleName="reply-form__btn" onClick={this.onCancel}>Cancel</button>
-            <button styleName="reply-form__btn" onClick={this.onSend}>Send</button>
+            <button styleName="reply-form__btn" onClick={this.onCancel}>{cancelBtnText}</button>
+            <button styleName="reply-form__btn" onClick={this.onSend}>{sendBtnText}</button>
           </div>
 
         </footer>

@@ -27,14 +27,19 @@ module.exports = function ({ storiesOf, action }) {
     ))
     .add('reply form', () => (
       <Comment
-        author="Vasya Pupkin"
-        text="Write something..."
+        author="Вася Пупкин"
+        text="Добавить запись..."
+        placeholder="Добавить запись..."
+        sendBtnText="Отправить"
+        cancelBtnText="Отмена"
         customAvatar={customAvatar}
         hideTime
         hideAuthor
         customCommentFooterActions={<span></span>}
         editableOnClick
+
       />
     ))
+
 
 };

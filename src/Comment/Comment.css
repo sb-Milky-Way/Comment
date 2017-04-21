@@ -1,5 +1,5 @@
 .comment {
-  max-width: 400px;
+  max-width: 450px;
   background: transparent;
   line-height: 14px;
   border-top: 1px solid transparent;
@@ -93,9 +93,12 @@
     &__actions {
       width: 50%;
     }
+    &__actions:last-child {
+      text-align:right;
+    }
 
     &__btn {
-      padding:8px 20px;
+      padding:8px 15px;
       outline:none;
       background: white;
       border:1px solid #e8e8e8;
