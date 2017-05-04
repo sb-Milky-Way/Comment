@@ -7,6 +7,7 @@ import FavoriteIcon from 'react-icons/lib/md/favorite-outline';
 import EditIcon from 'react-icons/lib/md/edit';
 import AddIcon from 'react-icons/lib/md/add-circle-outline';
 import DefaultAvatar from '../Avatar';
+import ReplyForm from '../ReplyForm';
 import Textarea from 'react-textarea-autosize';
 import Time from 'react-time-format';
 
@@ -118,21 +119,7 @@ class Comment extends Component {
 
   renderReplyForm = () => {
     const { placeholder, sendBtnText, cancelBtnText } = this.props;
-    return (
-      <div styleName="reply-form">
-        <Textarea rows={3} placeholder={placeholder}></Textarea>
-        <footer styleName="reply-form__footer">
-          <div styleName="reply-form__actions">
-            <button styleName="comment__icon-btn"><AddIcon size="20px" color="#828282"/></button>
-          </div>
-          <div styleName="reply-form__actions">
-            <button styleName="reply-form__btn" onClick={this.onCancel}>{cancelBtnText}</button>
-            <button styleName="reply-form__btn" onClick={this.onSend}>{sendBtnText}</button>
-          </div>
-
-        </footer>
-      </div>
-    )
+    return <ReplyForm placeholder={placeholder} autor="#" />
   }
 
   render() {

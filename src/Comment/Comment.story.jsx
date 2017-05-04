@@ -25,13 +25,13 @@ module.exports = function ({ storiesOf, action, knob }) {
       <Comment {...requiredProps} customAvatar={customAvatar} />
     ))
     .add('time format', () => (
-      <Comment {...requiredProps} customAvatar={customAvatar} timeFormat="DD.MM.YY HH:MM" />
+      <Comment {...requiredProps} timeFormat="DD.MM.YY HH:MM" />
     ))
     .add('editable comment', () => (
-      <Comment {...requiredProps} customAvatar={customAvatar} editable />
+      <Comment {...requiredProps} editable />
     ))
     .add('editable and removable comment', () => (
-      <Comment {...requiredProps} customAvatar={customAvatar} editable onDelete={() => { console.log('delete click'); }} />
+      <Comment {...requiredProps} editable onDelete={() => { console.log('delete click'); }} />
     ))
     .add('reply form', 'test', () => (
       <Comment
@@ -40,7 +40,6 @@ module.exports = function ({ storiesOf, action, knob }) {
         placeholder="Добавить запись..."
         sendBtnText="Отправить"
         cancelBtnText="Отмена"
-        customAvatar={customAvatar}
         hideTime
         hideAuthor
         customCommentFooterActions={<span />}
