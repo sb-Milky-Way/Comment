@@ -40,6 +40,13 @@ module.exports = function ({ storiesOf, action, knob }) {
         </Comment.Footer>
       </Comment>
     ))
+    .add('time href', () => (
+      <Comment user={user}>
+        <Comment.Header userName={user.name} />
+        <Comment.Content>Some content here</Comment.Content>
+        <Comment.Footer date={new Date()} dateHref={"/comments/12345"}/>
+      </Comment>
+    ))
     .add('custom time format', () => (
       <Comment user={user}>
         <Comment.Header userName={user.name} />

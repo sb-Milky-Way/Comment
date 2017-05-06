@@ -6,15 +6,16 @@ import importcss from 'importcss';
 import styles from './Comment.css';
 
 @importcss(styles)
-class CommentHeader extends React.Component {
+class CommentMeta extends React.Component {
   static propTypes = {
     userName : PropTypes.string,
     timeFormatter : PropTypes.func,
-    date : PropTypes.instanceOf(Date)
+    date : PropTypes.instanceOf(Date),
+    dateHref : PropTypes.string
   }
 
   static defaultProps = {
-    
+
   }
 
   formatDate = (value, unit, suffix, date, defaultFormatter) => {
@@ -26,9 +27,13 @@ class CommentHeader extends React.Component {
 
   render() {
 
-    const { className, children, userName, date, timeFormatter, ...props } = this.props;
+    const { className, children, userName, date, dateHref, timeFormatter, ...props } = this.props;
 
     const timeagoFormat = timeFormatter || this.formatDate;
+
+    const timeAgo = date && <TimeAgo date={date} formatter={timeagoFormat}/>;
+
+    const timeAgoLink = dateHref && <a href={dateHref}>{timeAgo}</a> || timeAgo;
 
     return (
       <div
@@ -36,11 +41,11 @@ class CommentHeader extends React.Component {
         styleName={cn(className, 'comment__meta')}
       >
         {userName && <span>{userName}</span>}
-        {date && <span><TimeAgo date={date} formatter={timeagoFormat}/></span>}
+        {timeAgo && timeAgoLink}
         {children}
       </div>
     );
   }
 }
 
-export default CommentHeader;
+export default CommentMeta;

@@ -5,8 +5,6 @@ import importcss from 'importcss';
 import styles from './Comment.css';
 
 import Avatar from 'lsk-general/General/Avatar';
-// import Avatar from '../Avatar';
-import Time from 'react-time-format';
 import Meta from './CommentMeta';
 import Content from './CommentContent'
 import Actions from './CommentActions';
@@ -31,7 +29,7 @@ class Comment extends Component {
       <section styleName="comment">
         <div styleName="comment__avatar-container">
           <div  styleName="comment__avatar">
-            {user && <Avatar name={user.name} src={user.src} size="40"/>}
+            {user && <a href={user.href}><Avatar name={user.name} src={user.src} size={40}/></a>}
           </div>
         </div>
         <div styleName="comment__body">

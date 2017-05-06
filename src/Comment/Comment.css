@@ -5,6 +5,13 @@
   font-family: -apple-system, "San Francisco", Roboto, "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   display: flex;
   padding:5px;
+  border-bottom: 1px solid #f4f4f4;
+
+  a {
+      text-decoration: none;
+      color: inherit;
+  }
+
   &__content {
     width: 100%;
     display:flex;
@@ -20,6 +27,13 @@
   &__actions {
     text-align:right;
     color:initial;
+    opacity:0.3;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+    &:hover {
+      opacity:1;
+
+    }
   }
 
   &__meta {
