@@ -4,8 +4,8 @@ import cn from 'classnames';
 import importcss from 'importcss';
 import styles from './Comment.css';
 
-//import Avatar from 'lsk-general/src/General/Avatar';
-import Avatar from '../Avatar';
+import Avatar from 'lsk-general/General/Avatar';
+// import Avatar from '../Avatar';
 import Time from 'react-time-format';
 import Meta from './CommentMeta';
 import Content from './CommentContent'
