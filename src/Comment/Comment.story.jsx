@@ -1,11 +1,13 @@
 import React from 'react'; //eslint-disable-line
 import Comment from './Comment';
+import ClearIcon from 'react-icons/lib/md/clear';
+import FavoriteIcon from 'react-icons/lib/md/favorite-outline';
+import EditIcon from 'react-icons/lib/md/edit';
+import AddIcon from 'react-icons/lib/md/add-circle-outline';
 
-const requiredProps = {
-  author: 'Vasya Pupkin',
-  text: 'I am comment',
-};
-
+const formatDate = (value, unit, suffix, date, defaultFormatter) => {
+    return "commented " + defaultFormatter(value, unit, suffix, date);
+}
 
 const user = {
   _id: '12345',
@@ -14,39 +16,74 @@ const user = {
   avatar: 'http://um.mos.ru/upload/resize_cache/iblock/11f/300_300_2/%D0%9F%D1%83%D1%88%D0%BA%D0%B8%D0%BD_%D0%A2%D1%80%D0%BE%D0%BF%D0%B8%D0%BD%D0%B8%D0%BD.jpg',
 };
 
-const customAvatar = <div style={{ width: 34, height: 34, lineHeight: '34px', textAlign: 'center', color: 'red', border: '2px solid green' }}>QQ</div>;
+const now = new Date();
+var yesterday = new Date(now.getTime());
+yesterday.setDate(now.getDate() - 1);
 
 module.exports = function ({ storiesOf, action, knob }) {
   return storiesOf('Comment', module)
     .add('default', () => (
-      <Comment {...requiredProps} />
+      <Comment user={user}>
+        <Comment.Header userName={user.name} />
+        <Comment.Content>Some content here</Comment.Content>
+        <Comment.Footer date={new Date()} />
+      </Comment>
     ))
-    .add('with custom avatar', () => (
-      <Comment {...requiredProps} customAvatar={customAvatar} />
+    .add('with actions', () => (
+      <Comment user={user}>
+        <Comment.Header userName={user.name}>
+          <Comment.Actions><ClearIcon /></Comment.Actions>
+        </Comment.Header>
+        <Comment.Content>Some content here</Comment.Content>
+        <Comment.Footer date={new Date()}>
+          <Comment.Actions><FavoriteIcon /></Comment.Actions>
+        </Comment.Footer>
+      </Comment>
     ))
-    .add('time format', () => (
-      <Comment {...requiredProps} timeFormat="DD.MM.YY HH:MM" />
+    .add('custom time format', () => (
+      <Comment user={user}>
+        <Comment.Header userName={user.name} />
+        <Comment.Content>Some content here</Comment.Content>
+        <Comment.Footer date={new Date()} timeFormatter={formatDate} />
+      </Comment>
     ))
-    .add('editable comment', () => (
-      <Comment {...requiredProps} editable />
+    .add('time ago', () => (
+      <Comment user={user}>
+        <Comment.Header userName={user.name} />
+        <Comment.Content>Some content here</Comment.Content>
+        <Comment.Footer date={yesterday} />
+      </Comment>
     ))
-    .add('editable and removable comment', () => (
-      <Comment {...requiredProps} editable onDelete={() => { console.log('delete click'); }} />
+    .add('info position', () => (
+      <Comment user={user}>
+        <Comment.Header date={yesterday} />
+        <Comment.Content>Some content here</Comment.Content>
+        <Comment.Footer userName={user.name} />
+      </Comment>
     ))
-    .add('reply form', 'test', () => (
-      <Comment
-        author="Вася Пупкин"
-        text="Добавить запись..."
-        placeholder="Добавить запись..."
-        sendBtnText="Отправить"
-        cancelBtnText="Отмена"
-        hideTime
-        hideAuthor
-        customCommentFooterActions={<span />}
-        editableOnClick
-
-      />
+    .add('with markdown content', () => (
+      <Comment user={user}>
+        <Comment.Header userName={user.name} />
+        <Comment.Content md>## header</Comment.Content>
+        <Comment.Footer date={new Date()} />
+      </Comment>
     ))
+    .add('with html content (as string)', () => (
+      <Comment user={user}>
+        <Comment.Header userName={user.name} />
+        <Comment.Content html>{"<div>Some <b>html content</b> here</div>"}</Comment.Content>
+        <Comment.Footer date={new Date()} />
+      </Comment>
+    ))
+    .add('with jsx content', () => (
+      <Comment user={user}>
+        <Comment.Header userName={user.name} />
+        <Comment.Content><a href="#">Link</a></Comment.Content>
+        <Comment.Footer date={new Date()} />
+      </Comment>
+    ))
+    .add('no data', () => <Comment />)
+/*
     // by @isuvorov
     .add('sample', () => (
       <Comment
@@ -212,7 +249,7 @@ module.exports = function ({ storiesOf, action, knob }) {
     ))
     .add('knob', () => (
       <Comment
-        content={knob.text('content')}
+        text={knob.text('text')}
       />
-    ));
+    ))*/;
 };

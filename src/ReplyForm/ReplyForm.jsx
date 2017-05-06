@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import Textarea from 'react-textarea-autosize';
 import AddIcon from 'react-icons/lib/md/add-circle-outline';
-import DefaultAvatar from '../Avatar';
+//import Avatar from 'lsk-general/src/General/Avatar';
+import Avatar from '../Avatar';
 import cn from 'classnames';
 import importcss from 'importcss';
 import styles from './ReplyForm.css';
@@ -9,7 +10,7 @@ import styles from './ReplyForm.css';
 @importcss(styles)
 class ReplyForm extends Component {
   static propTypes = {
-    author: PropTypes.string.isRequired,
+    //author: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     sendBtnText: PropTypes.string,
     cancelBtnText: PropTypes.string,
@@ -33,7 +34,7 @@ class ReplyForm extends Component {
       onSend
     } = this.props;
 
-    const avatar = this.props.customAvatar || <div  styleName="reply-form__avatar"><DefaultAvatar /></div>;
+    const avatar = this.props.customAvatar || <div  styleName="reply-form__avatar"><Avatar /></div>;
 
     return (
       <section styleName="reply-form">
