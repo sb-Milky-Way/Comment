@@ -1,8 +1,13 @@
 .reply-form {
-  width: 100%;
   display:flex;
-  flex-wrap:wrap;
-  margin-left:10px;
+  font-family:inherit;
+  padding:5px;
+  &__body {
+    width:100%;
+    margin-left:10px;
+    display:flex;
+    flex-wrap:wrap;
+  }
   textarea {
     resize: none;
     padding: 14px 20px 16px 12px;
@@ -17,13 +22,23 @@
     display:flex;
     padding:5px;
     align-items:baseline;
+    justify-content: space-between;
   }
+  &__add-attachment {
 
+  }
   &__actions {
-    width: 50%;
+    width: 80%;
   }
   &__actions:last-child {
     text-align:right;
+  }
+
+  &__icon-btn {
+      border: 0px;
+      background: transparent;
+      outline: none;
+      cursor:pointer;
   }
 
   &__btn {

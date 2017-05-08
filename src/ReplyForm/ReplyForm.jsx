@@ -9,45 +9,48 @@ import styles from './ReplyForm.css';
 @importcss(styles)
 class ReplyForm extends Component {
   static propTypes = {
-    //author: PropTypes.string.isRequired,
+    user: PropTypes.object,
     placeholder: PropTypes.string,
     sendBtnText: PropTypes.string,
     cancelBtnText: PropTypes.string,
-    customAvatar: PropTypes.node,
-    onSend: PropTypes.func
+    onSend: PropTypes.func,
+    onCancel : PropTypes.func
   };
   static defaultProps = {
     placeholder: "Write here...",
     sendBtnText: "Send",
     cancelBtnText : "Cancel",
-    onSend : () => {}
+    onSend : () => {},
+    onCancel : () => {}
   };
 
   render() {
     const {
-      author,
+      user,
       placeholder,
       sendBtnText,
       cancelBtnText,
-      customAvatar,
-      onSend
+      onSend,
+      onCancel
     } = this.props;
-
-    const avatar = this.props.customAvatar || <div  styleName="reply-form__avatar"><Avatar /></div>;
 
     return (
       <section styleName="reply-form">
-        <Textarea rows={3} placeholder={placeholder}></Textarea>
-        <footer styleName="reply-form__footer">
-          <div styleName="reply-form__actions">
-            <button styleName="comment__icon-btn"><AddIcon size="20px" color="#828282"/></button>
-          </div>
-          <div styleName="reply-form__actions">
-            <button styleName="reply-form__btn" onClick={this.onCancel}>{cancelBtnText}</button>
-            <button styleName="reply-form__btn" onClick={this.onSend}>{sendBtnText}</button>
-          </div>
-
-        </footer>
+        <div>
+        {user && <a href={user.href}><Avatar name={user.name} src={user.src} size={40}/></a>}
+        </div>
+        <div styleName="reply-form__body">
+          <Textarea rows={3} placeholder={placeholder}></Textarea>
+          <footer styleName="reply-form__footer">
+            <div styleName="reply-form__add-attachment">
+              <button styleName="reply-form__icon-btn"><AddIcon size="20px" color="#828282"/></button>
+            </div>
+            <div styleName="reply-form__actions">
+              <button styleName="reply-form__btn" onClick={onCancel}>{cancelBtnText}</button>
+              <button styleName="reply-form__btn" onClick={onSend}>{sendBtnText}</button>
+            </div>
+          </footer>
+        </div>
       </section>
     );
   }
