@@ -31,6 +31,9 @@ class CommentList extends React.Component {
     const renderer = commentRenderer || this.commentRenderer;
     return (
       <section>
+        <div>
+          Панель
+        </div>
         {comments.map((c, i) => renderer(c))}
       </section>
     );
