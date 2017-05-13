@@ -1,55 +1,52 @@
 .reply-form {
-  max-width: 400px;
-
-  &__avatar-container {
-    display: block;
-    float: left;
+  display:flex;
+  font-family:inherit;
+  padding:5px;
+  &__body {
+    width:100%;
+    margin-left:10px;
+    display:flex;
+    flex-wrap:wrap;
   }
-
-  &__avatar {
-    width: 34px;
-    height: 34px;
-    background: gray;
-    border-radius: 50%;
-    line-height: 34px;
-    text-align: center;
-  }
-
-  &__content {
-    margin-left: 44px;
-    textarea {
-      resize: none;
-      width: calc(100% - 34px);
-      padding: 14px 20px 16px 12px;
-      border:1px solid #e8e8e8;
-      display:block;
-    }
+  textarea {
+    resize: none;
+    padding: 14px 20px 16px 12px;
+    border:1px solid #e8e8e8;
+    font-family: inherit;
+    width: 100%;
   }
 
   &__footer {
     background: #fafbfc;
-    padding: 10px 20px;
-    height:30px;
-    display:block;
+    width: 100%;
+    display:flex;
+    padding:5px;
+    align-items:baseline;
+    justify-content: space-between;
+  }
+  &__add-attachment {
+
+  }
+  &__actions {
+    width: 80%;
+  }
+  &__actions:last-child {
+    text-align:right;
   }
 
-  &__footer-actions {
-    float: left;
-    position:relative;
-    line-height:30px;
+  &__icon-btn {
+      border: 0px;
+      background: transparent;
+      outline: none;
+      cursor:pointer;
   }
 
-  &__footer-send {
-    float: right;
-    position:relative;
-  }
-
-  &__footer-send-btn {
-    padding:8px 20px;
+  &__btn {
+    padding:8px 15px;
     outline:none;
     background: white;
     border:1px solid #e8e8e8;
-    display:inline-block;
     cursor: pointer;
+    font-size:14px;
   }
 }

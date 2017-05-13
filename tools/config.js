@@ -7,9 +7,13 @@ const ctx = {
   dirname,
   pkg: require('../package.json'),
   deps: [
+    {
+      name: 'lsk-general',
+      path: fs.realpathSync(`${dirname}/node_modules/lsk-general/src`),
+      alias: 'lsk-general',
+    },
   ],
   alias: {
-    'lsk-general': fs.realpathSync(dirname + '/src'),
     react: fs.realpathSync(dirname + '/node_modules/react'),
     'react-dom': fs.realpathSync(dirname + '/node_modules/react-dom'),
   },
