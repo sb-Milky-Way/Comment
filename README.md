@@ -1,14 +1,15 @@
 # Comment
 Comment component for https://github.com/lskjs
 
-To start:
+**To start:**
 
-git clone https://github.com/sb-Milky-Way/Comment.git
-npm install
-npm run dev
+ - `git clone https://github.com/sb-Milky-Way/Comment.git`
+ - `npm install`
+ - `npm run dev`
 
-Deploy to gh-pages:
-npm run deploy-storybook
+**Deploy to gh-pages:**
+
+`npm run deploy-storybook`
 
 Check here https://sb-milky-way.github.io/Comment
 
